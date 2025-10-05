@@ -25,7 +25,9 @@ O projeto é composto por:
 O projeto está organizado da seguinte forma:
 
 /store/
-├── store-api/     # Aplicação NestJS (API)
+
+└── store-api/     # Aplicação NestJS (API)
+
 └── store-frontend/    # Aplicação Angular (UI)
 
 ## ✅ Pré-requisitos

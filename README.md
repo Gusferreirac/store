@@ -18,7 +18,6 @@ O projeto é composto por:
 | Prisma (ORM) | Tailwind CSS |
 | PostgreSQL | TypeScript |
 | Docker | RxJS |
-| TypeScript |  |
 
 ## 📂 Estrutura de Pastas
 

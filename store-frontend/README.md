@@ -4,18 +4,14 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ## Como rodar o projeto
 
-### 1.  Clone o repositório:
-
-git clone <URL_DO_REPOSITORIO>
-
-### 2. Entre na pasta do projeto:
+### 1. Entre na pasta do projeto:
 
 cd store/store-frontend
 
-### 3. Instale as dependencias:
+### 2. Instale as dependencias:
 
 npm install
 
-### 4. Inicie o projeto:
+### 3. Inicie o projeto:
 
 npm start

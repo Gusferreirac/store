@@ -1,4 +1,4 @@
-# Projeto Store CRM (Full Stack)
+# Projeto Store (Full Stack)
 
 Bem-vindo ao Store CRM, um sistema de gerenciamento de clientes. Este repositório contém o projeto completo, dividido em duas partes principais: a API (backend) e a interface do usuário (frontend).
 

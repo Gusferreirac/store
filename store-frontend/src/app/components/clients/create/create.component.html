@@ -1,0 +1,74 @@
+<div class="bg-slate-100 min-h-screen">
+
+  <div class="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+
+    <div class="bg-white rounded-xl shadow-md overflow-hidden">
+      
+      <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+        
+        <div class="p-6 border-b border-slate-200">
+          <h2 class="text-xl font-semibold text-slate-800">
+            Cadastrar Novo Cliente
+          </h2>
+          <p class="mt-1 text-sm text-slate-500">
+            Preencha os campos abaixo para adicionar um novo cliente ao sistema.
+          </p>
+        </div>
+
+        <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+          
+          <div class="md:col-span-2">
+            <mat-form-field  class="w-full">
+              <mat-label>Nome Completo</mat-label>
+              <input matInput formControlName="name" placeholder="Ex: Gustavo" required>
+              <mat-error *ngIf="clientForm.get('name')?.invalid && clientForm.get('name')?.touched">
+                Nome é obrigatório e deve ter no mínimo 3 caracteres.
+              </mat-error>
+              </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field  class="w-full">
+              <mat-label>E-mail</mat-label>
+              <input matInput formControlName="email" placeholder="Ex: gustavo@email.com" required>
+               <mat-error *ngIf="clientForm.get('email')?.invalid && clientForm.get('email')?.touched">
+                Por favor, insira um e-mail válido.
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field  class="w-full">
+              <mat-label>CPF</mat-label>
+              <input matInput formControlName="cpf" placeholder="000.000.000-00" required>
+              <mat-hint>Use o formato 000.000.000-00</mat-hint>
+               <mat-error *ngIf="clientForm.get('cpf')?.invalid && clientForm.get('cpf')?.touched">
+                CPF é obrigatório e deve ter 11 dígitos.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          
+          <div>
+            <mat-form-field  class="w-full">
+              <mat-label>Telefone (Opcional)</mat-label>
+              <input matInput formControlName="phone" placeholder="(31) 99999-9999">
+            </mat-form-field>
+          </div>
+
+          <div class="md:col-span-2">
+            <mat-form-field  class="w-full">
+              <mat-label>Endereço (Opcional)</mat-label>
+              <input matInput formControlName="address" placeholder="Ex: Rua A, 123, Bairro B">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="p-6 bg-slate-50 border-t border-slate-200 flex">
+          <button class="flex items-center gap-2 bg-slate-900 border-slate-900 border-2 hover:bg-transparent hover:text-slate-900 transition-colors duration-200 cursor-pointer text-white p-2 rounded" mat-raised-button color="primary" type="submit">
+            Salvar Cliente
+          </button>
+        </div>
+
+      </form>
+    </div> </div>
+</div>

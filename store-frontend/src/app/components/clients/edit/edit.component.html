@@ -1,0 +1,63 @@
+<div class="bg-slate-100 min-h-screen">
+  <div class="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+    
+    <div *ngIf="isLoading; else formCard" class="flex justify-center items-center h-96">
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <ng-template #formCard>
+      <div class="bg-white rounded-xl shadow-md overflow-hidden">
+        
+        <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+          
+          <div class="p-6 border-b border-slate-200">
+            <h2 class="text-xl font-semibold text-slate-800">Atualizar Cliente</h2>
+            <p class="mt-1 text-sm text-slate-500">Altere os campos abaixo para atualizar as informações do cliente.</p>
+          </div>
+
+          <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+            <div class="md:col-span-2">
+              <mat-form-field class="w-full">
+                <mat-label>Nome Completo</mat-label>
+                <input matInput formControlName="name" required>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field class="w-full">
+                <mat-label>E-mail</mat-label>
+                <input matInput formControlName="email" required>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field class="w-full">
+                <mat-label>CPF</mat-label>
+                <input matInput formControlName="cpf" required>
+                <mat-hint>Use o formato 000.000.000-00</mat-hint>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field class="w-full">
+                <mat-label>Telefone (Opcional)</mat-label>
+                <input matInput formControlName="phone">
+              </mat-form-field>
+            </div>
+            <div class="md:col-span-2">
+              <mat-form-field class="w-full">
+                <mat-label>Endereço (Opcional)</mat-label>
+                <input matInput formControlName="address">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="p-6 bg-slate-50 border-t border-slate-200 flex justify-end gap-4">
+            <button mat-stroked-button type="button" (click)="onCancel()">Cancelar</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="clientForm.invalid || isLoading">
+              Salvar Alterações
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </ng-template>
+  </div>
+</div>

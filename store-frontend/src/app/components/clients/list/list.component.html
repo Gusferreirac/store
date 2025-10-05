@@ -1,0 +1,187 @@
+<div class="bg-slate-100 min-h-screen">
+  <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+    <div
+      class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6"
+    >
+      <div>
+        <h1 class="text-3xl font-bold tracking-tight text-slate-800">
+          Painel de Clientes
+        </h1>
+        <p class="mt-1 text-slate-500">
+          Gerencie, edite e adicione novos clientes.
+        </p>
+      </div>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="navigateToCreateClient()"
+      >
+        <mat-icon>add</mat-icon>
+        <span>Novo Cliente</span>
+      </button>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-md overflow-hidden">
+      <div class="p-4 sm:p-6 border-b border-slate-200">
+        <mat-form-field class="w-full sm:max-w-xs">
+          <mat-label>Pesquisar por nome, email...</mat-label>
+          <mat-icon matPrefix class="text-slate-400">search</mat-icon>
+          <input
+            matInput
+            (keyup)="applyFilter($event)"
+            placeholder="Digite aqui..."
+          />
+        </mat-form-field>
+      </div>
+
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="name">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider"
+          >
+            Nome
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="px-6 py-4 whitespace-nowrap font-medium text-slate-900"
+          >
+            {{ element.name }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider"
+          >
+            Email
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="px-6 py-4 whitespace-nowrap text-slate-600"
+          >
+            {{ element.email }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="phone">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider"
+          >
+            Telefone
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="px-6 py-4 whitespace-nowrap text-slate-600"
+          >
+            {{ element.phone || "---" }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cpf">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider"
+          >
+            CPF
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="px-6 py-4 whitespace-nowrap text-slate-600"
+          >
+            {{ element.cpf }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider"
+          >
+            Endereço
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="px-6 py-4 whitespace-nowrap text-slate-600"
+          >
+            {{ element.address || "---" }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="px-6 py-3 text-right text-xs font-medium text-slate-500 uppercase tracking-wider"
+          >
+            Ações
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="px-6 py-4 whitespace-nowrap text-right"
+          >
+            <button
+              mat-icon-button
+              color="primary"
+              matTooltip="Editar Cliente"
+              (click)="editClient(element)"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              color="warn"
+              matTooltip="Excluir Cliente"
+              (click)="deleteClient(element)"
+            >
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns; sticky: true"
+        ></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          class="border-b border-slate-200 hover:bg-slate-50"
+        ></tr>
+
+        <tr class="mat-row" *matNoDataRow>
+          <td
+            class="mat-cell p-6 text-center text-slate-500"
+            [attr.colspan]="displayedColumns.length"
+          >
+            Nenhum cliente encontrado para a sua busca.
+          </td>
+        </tr>
+      </table>
+
+      <mat-paginator
+        #paginator
+        class="border-t border-slate-200"
+        [length]="totalElements"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        (page)="onPageChange($event)"
+        aria-label="Select page"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>

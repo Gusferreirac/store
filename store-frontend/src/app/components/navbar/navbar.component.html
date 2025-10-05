@@ -1,0 +1,58 @@
+<mat-toolbar
+  class="bg-white shadow-md border-b border-slate-200 px-4 sm:px-6 lg:px-8"
+>
+  <div class="w-full flex justify-between items-center">
+    <div class="flex items-center">
+      <a
+        routerLink="/"
+        class="flex items-center gap-2 text-xl font-bold text-slate-80 transition-colors"
+      >
+        <mat-icon class="text-sky-600">supervised_user_circle</mat-icon>
+        <span>MyStore</span>
+      </a>
+    </div>
+
+    <nav class="hidden md:flex items-center gap-2">
+      <button
+        mat-button
+        [matMenuTriggerFor]="clientsMenu"
+        #menuTrigger="matMenuTrigger"
+        (mouseenter)="menuTrigger.openMenu(); enter()"
+        (mouseleave)="leave(menuTrigger)"
+        class="text-base"
+      >
+        <span>Clientes</span>
+        <mat-icon>expand_more</mat-icon>
+      </button>
+
+      <mat-menu #clientsMenu="matMenu" [hasBackdrop]="false">
+        <div (mouseenter)="enter()" (mouseleave)="leave(menuTrigger)">
+          <button mat-menu-item (click)="navigateTo('/clients/create')">
+            <mat-icon>add</mat-icon>
+            <span>Cadastrar Cliente</span>
+          </button>
+          <button mat-menu-item (click)="navigateTo('/clients')">
+            <mat-icon>view_list</mat-icon>
+            <span>Listar Clientes</span>
+          </button>
+        </div>
+      </mat-menu>
+    </nav>
+
+    <div class="md:hidden">
+      <button mat-icon-button [matMenuTriggerFor]="mobileMenu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #mobileMenu="matMenu">
+        <button mat-menu-item (click)="navigateTo('/clients/create')">
+          <mat-icon>add</mat-icon>
+          <span>Cadastrar Cliente</span>
+        </button>
+        <button mat-menu-item (click)="navigateTo('/clients')">
+          <mat-icon>view_list</mat-icon>
+          <span>Listar Clientes</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>

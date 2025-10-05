@@ -6,37 +6,32 @@
 
 ### Passos
 
-1.  **Clone o repositório:**
+1.  **Entre na pasta do projeto:**
     ```bash
-    git clone <URL_DO_REPOSITORIO_BACKEND>
+    cd store/store-api
     ```
 
-2.  **Entre na pasta do projeto:**
-    ```bash
-    cd <NOME_DA_PASTA>
-    ```
-
-3.  **Configure as variáveis de ambiente:**
+2.  **Configure as variáveis de ambiente:**
     Copie o arquivo de exemplo `.env.example` para um novo arquivo chamado `.env`.
 
-4.  **Inicie o banco de dados com Docker:**
+3.  **Inicie o banco de dados com Docker:**
     Este comando irá criar e iniciar o contêiner do PostgreSQL em segundo plano.
     ```bash
     docker-compose up -d
     ```
 
-5.  **Gere o banco de dados:**
+4.  **Gere o banco de dados:**
     Este comando irá criar as tabelas no banco de dados com base no seu `schema.prisma`.
     ```bash
     npx prisma db push
     ```
 
-6.  **Instale as dependências da aplicação:**
+5.  **Instale as dependências da aplicação:**
     ```bash
     npm install
     ```
 
-7.  **Execute a aplicação:**
+6.  **Execute a aplicação:**
     ```bash
     npm run start:dev
     ```
